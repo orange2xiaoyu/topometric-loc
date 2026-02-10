@@ -114,12 +114,3 @@ If you use this work in your research, please cite:
 }
 ```
 
----
-
-## Contact
-
-- **Corresponding Author**: [zengtaiping@fudan.edu.cn](mailto:zengtaiping@fudan.edu.cn)
-- **Beijing Normal University**
-- **Fudan University**
-
----
