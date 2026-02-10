@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatially-Enhanced Recurrent Units | Fan Yang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#contributions">Contributions</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#results">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="title">Brain-Inspired Visual Topometric Localization via Roadnetwork-Constraint Hidden Markov Model</h1>
+            
+            <div class="authors">
+                <p>Jinyu Li<sup>1</sup>, Taiping Zeng<sup>2,*</sup>, Bailu Si<sup>1</sup></p>
+                <p class="affiliation"><sup>1</sup>Beijing Normal University &nbsp;&bull;&nbsp; <sup>2</sup>Fudan University</p>
+                <p class="note"><sup>*</sup>Corresponding Author: <a href="mailto:zengtaiping@fudan.edu.cn">zengtaiping@fudan.edu.cn</a></p>
+
+
+            </div>
+
+            <!-- Institutional Affiliations -->
+            <!-- <div class="institutional-logos hero-logos">
+                <a href="https://rsl.ethz.ch" target="_blank">
+                    <img src="images/rsl-logo.png" alt="Robotic Systems Lab" class="institution-logo">
+                </a>
+                <a href="https://sairlab.org" target="_blank">
+                    <img src="images/sairlab-logo.png" alt="Spatial AI & Robotics Lab" class="institution-logo">
+                </a>
+            </div> -->
+
+            <div class="paper-info">
+                <span class="badge">IEEE Robotics and Automation Letters (RA-L)</span>
+                <span class="badge">IEEE International Conference on Robotics and Automation (ICRA)</span>
+                <!-- <span class="badge">September 2025</span> -->
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://ieeexplore.ieee.org/abstract/document/11145338" class="btn btn-primary" target="_blank">📄 Read Paper</a>
+                <!-- <a href="#code" class="btn btn-secondary">💻 Code</a> -->
+                <a href="#video" class="btn btn-secondary">🤖 Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract -->
+    <section id="abstract" class="section">
+        <div class="container">
+            <h2>Abstract</h2>
+            <div class="abstract-content">
+                <p>Accurate localization in GPS-denied environments remains a critical challenge for autonomous robot navigation. Animals exhibit remarkable navigational abilities in complex, dynamic environments by relying on mental cognitive maps. Inspired by neural representations such as head direction cells and grid cells, numerous robotic cognitive mapping systems can efficiently cover large areas; however, they often lack the precise metric information required for accurate localization. </p>
+                <p>To address this challenge, we propose a neurodynamically driven monocular visual topometric localization approach based on road network constraints. We introduce the Roadnetwork-Constraint Hidden Markov Model (RC-HMM) to enhance the semi-metric map by incorporating road network constraints, forming a coherent topometric map that maintains vertex relationships and improves localization accuracy. </p>
+                <p>Experimental results in the CARLA Town07 environment demonstrate the remarkable efficiency of our topometric cognitive map. Compared to the semi-metric map, our approach achieves a 95% reduction in Absolute Pose Error (APE) and an 81% reduction in Relative Pose Error (RPE). Compared to binocular ORB-SLAM3, our monocular approach reduces CPU usage by 96.7% and map storage by 77.7%, with an APE of 3.6 m and RPE of 1.4 m — closely matching ORB-SLAM3’s 3.86 m APE and 0.96 m RPE. Furthermore, by leveraging neurodynamics of grid cells and head direction cells, our monocular topometric localization robustly delivers the localization accuracy of 3.86 meters, comparable to binocular ORB-SLAM3. This approach integrates road network metrics into topological maps, enhancing brain-inspired navigation with topometric maps in complex environments</p>
+                
+            </div>
+        </div>
+    </section>
+    
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video controls>
+                <source src="images/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+
+    <!-- Contributions -->
+    <section id="contributions" class="section section-light">
+        <div class="container">
+            <h2>Key Contributions</h2>
+            <div class="contributions-grid">
+                <div class="contribution-card">
+                    <div class="icon">🧠</div>
+                    <h3>Brain-inspired Monocular Visual Localization</h3>
+                    <p>We propose a brain-inspired monocular visual localization method for GPS-denied environments, using neural dynamics of grid and head-direction cells to build a coherent topometric cognitive map that integrates topological and metric information for precise robot localization</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="icon">🔧</div>
+                    <h3>Roadnetwork-Constraint Hidden Markov Model (RC-HMM)</h3>
+                    <p>We introduce RC-HMM incorporates road network metric into a semi-metric topological map. By jointly optimizing global vertex projections and local distance constraints, our method constructs a consistent and metrically accurate topometric map that supports robust localization by neurodynamics.</p>
+                </div>
+                <div class="contribution-card">
+                    <div class="icon">🎯</div>
+                    <h3>Robust and Efficient Localization</h3>
+                    <p>We validate our topometric approach in Carla Town07, reducing APE by 95% and RPE by 81% compared to semi-metric maps. Against binocular ORB-SLAM3, our monocular map achieves an APE of 3.6 m and RPE of 1.4 m (vs. 3.86 m and 0.96 m), while cutting CPU usage by 96.7%, map storage by 77.7%, and localization accuracy remains comparable (3.86 m vs. 4.63 m) with a 99% reduction of initial localization time.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" class="section">
+        <div class="container">
+            <h2>Methodology</h2>
+            <div class="methodology-content">
+                <h3>Limitations of Existing SLAM Paradigms</h3>
+                <ul>
+                    <li><strong>Metric SLAM</strong>: While providing high-fidelity geometric representations, metric approaches demand significant computational power and storage. The cumulative error and optimization complexity often hinder real-time performance and scalability in expansive, large-scale environments.</li>
+                    <li><strong>Topoloical SLAM</strong>: These methods offer a lightweight and resilient alternative by representing environments as abstract connectivity graphs. However, they typically provide only coarse-grained localization, lacking the fine-grained metric precision required for complex local maneuvering.</li>
+                </ul>
+
+                <h3> Roadnetwork-Constraint Hidden Markov Model (RC-HMM)</h3>
+                <p>We propose the Roadnetwork-Constraint Hidden Markov Model (RC-HMM) for constructing topometric maps. This method integrates semi-metric map and road network, effectively transforming a semi-metric cognitive map into a topometric cognitive map. The sequential visual inputs stimulate local view cells, which activate the neurodynamics of grid cells and head direction cells, thus facilitating precise localization.</p> 
+
+                <div class="figure-container">
+                    <div class="figure-placeholder architecture">
+                        <img src="images/f2.png" alt="Architecture" class="figure-image">
+                    </div>
+                    <p class="figure-caption">
+                        Framework for Topometric Cognitive Mapping. Visual and vestibular cues are integrated to construct a semi-metric cognitive map. Local view cells encode visual features, while integration and calibration cells support the formation of head direction and grid cell models for orientation and spatial representation. RC-HMM incorporates road networks, refining the map with global and local constraints. The neurodynamics of grid and head direction cells enable visual localization within the topometric map.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="section">
+        <div class="container">
+            <h2>Results & Performance</h2>
+            <div class="results-content">
+                <h3> Topometric Cognitive Mapping Performance</h3>
+                <h4 style="margin-top: 3rem;">Comparison of Semi-metric Map, Binocular ORB-SLAM3 Keyframes and Topometric Map</h4>
+                <div class="results-table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Methods </th>
+                                <th>CPU Usage (%)</th>
+                                <th>Map Size (MB)</th>
+                                <th>CameraFrame</th>
+                                <th>KeyFrame</th>
+                                <th>Vertex Nums</th>
+                                <th>Edge Nums</th>
+                                <th>APE (m)</th>
+                                <th>RPE (m)</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Semi-metric map (Mono)</td>
+                                <td>1.3</td>
+                                <td>56.1</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>1417</td>
+                                <td>1567</td>
+                                <td>121.2</td>
+                                <td>9.4</td>
+                                
+                            </tr>
+                            
+                            <tr>
+                                <td>ORB-SLAM3 (Binocular)</td>
+                                <td>40.57</td>
+                                <td>259</td>
+                                <td>14717</td>
+                                <td>715</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>3.86</td>
+                                <td><strong>0.96</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Topometric map (Mono, ours)</td>
+                                
+                                <td><strong>1.3</strong></td>
+                                <td><strong>56.1</strong></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>1417</td>
+                                <td>1567</td>
+                                <td><strong>3.6</strong></td>
+                                <td>1.4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="result-highlight"> 
+                    <div class="metric">
+                        <h4>-95%</h4>
+                        <p>vs. Semi-metric Map<br>(Absolute Pose Error (APE))</p>
+                    </div>
+                    <div class="metric">
+                        <h4>-96.7%</h4>
+                        <p>vs. Binocular ORB-SLAM3<br>(CPU Usage)</p>
+                    </div>
+                    <div class="metric">
+                        <h4>-77.7%</h4>
+                        <p>vs. Binocular ORB-SLAM3<br>(Map Storage)</p>
+                    </div>
+                    
+                </div>
+                <h4>The Topometric Cognitive Mapping Experiments</h4> 
+                <div class="figure-container">
+                    <div class="figure-placeholder architecture">
+                        <img src="images/f3.png" alt="loc results" class="figure-image">
+                    </div>
+                    <p class="figure-caption">
+                        (A) semi-metric topological map of Town07. (B) Topometric map overlaid with ground truth for accuracy comparison. (C) Distribution of APE for the topometric map relative to ground truth. (D, E, F) Comparative analysis of APE and RPE for  emi-metric map, binocular ORB-SLAM3 keyframes and topometric maps, highlighting a nearly tenfold difference. (H, I, G) Statistical analysis showing APE and RPE across three map types.
+                    </p>
+                </div>
+                <h3> Localization Performance</h3>
+                <h4>Visual Topometric Localization Experiments</h4>
+                <div class="figure-container">
+                    <div class="figure-placeholder architecture">
+                        <img src="images/f4.png" alt="loc results" class="figure-image">
+                    </div>
+                    <p class="figure-caption">
+                        (A-D) Neurodynamics of localization with a logarithmic time scale. (A) Visual input; neurodynamics of (B) grid cells and (C) head direction cells firing patterns; (D) localization errors. The start and end points of the test segment in (D) are marked by pentagram, while dark gray points indicate the initial position. (F, G) The localization accuracy of both our monocular topometric map and binocular ORB-SLAM3, corresponding to the start and end points of the quadrilateral stars in the test trajectory shown in (D).
+                    </p>
+                </div>
+
+                <h4">Localization Performance Results across Benchmark Trials</h4>
+                <div class="results-table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Metric</th>
+                                <th>Seq 1</th>
+                                <th>Seq 2</th>
+                                <th>Seq 3</th>
+                                <th>Seq 4</th>
+                                <th>Seq 5</th>
+                                <th>Seq 6</th>
+                                <th>Seq 7</th>
+                                <th>Seq 8</th>
+                                <th>Seq 9</th>
+                                <th>Seq 10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="3">ORB-SLAM3<br>(Binocular)</td>
+                                <td>Trajectory Length (m)</td>
+                                <td>372.7</td>
+                                <td>804.3</td>
+                                <td>170.0</td>
+                                <td>732.6</td>
+                                <td>812.7</td>
+                                <td>1485.3</td>
+                                <td>559.0</td>
+                                <td>294.2</td>
+                                <td>1423.9</td>
+                                <td>830.9</td>
+                            </tr>
+                            <tr>
+                                <td>Initial Loc. Time (ms)</td>
+                                <td>794</td>
+                                <td>1058</td>
+                                <td>1077</td>
+                                <td>978</td>
+                                <td>1104</td>
+                                <td>1171</td>
+                                <td>1176</td>
+                                <td>894</td>
+                                <td>993</td>
+                                <td>1064</td>
+                            </tr>
+                            <tr>
+                                <td>Localization Error (m)</td>
+                                <td><strong>2.82</strong></td>
+                                <td>4.77</td>
+                                <td><strong>3.69</strong></td>
+                                <td>4.03</td>
+                                <td>4.85</td>
+                                <td><strong>5.22</strong></td>
+                                <td>6.29</td>
+                                <td>4.86</td>
+                                <td>5.29</td>
+                                <td>4.50</td>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="2">Topometric map<br>(Mono, ours)</td>
+                                <td>Initial Loc. Time (ms)</td>
+                                <td><strong>1.54</strong></td>
+                                <td><strong>0.13</strong></td>
+                                <td><strong>0.65</strong></td>
+                                <td><strong>0.15</strong></td>
+                                <td><strong>2.02</strong></td>
+                                <td><strong>0.28</strong></td>
+                                <td><strong>0.12</strong></td>
+                                <td><strong>0.25</strong></td>
+                                <td><strong>0.21</strong></td>
+                                <td><strong>0.18</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Localization Error (m)</td>
+                                <td>4.03</td>
+                                <td><strong>3.74</strong></td>
+                                <td>5.19</td>
+                                <td><strong>3.59</strong></td>
+                                <td><strong>3.56</strong></td>
+                                <td>6.33</td>
+                                <td><strong>3.65</strong></td>
+                                <td>4.80</td>
+                                <td><strong>4.63</strong></td>
+                                <td><strong>3.89</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>
